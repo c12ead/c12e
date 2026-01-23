@@ -3,23 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>site</title>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>c12e</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+ 
         body {
             font-family: 'IBM Plex Mono', monospace;
             min-height: 100vh;
-            overflow: hidden;
-            background: #0a0a0a;
+            background: #ebe8e0;
+            position: relative;
+            overflow-x: hidden;
         }
-        
-        .bg-image {
+
+        .background-image {
             position: fixed;
             top: 0;
             left: 0;
@@ -29,229 +31,381 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            z-index: 1;
+            z-index: 0;
         }
-        
-        .overlay {
+
+        .background-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.84);
+            background: rgba(235, 232, 224, 1);
+            z-index: 1;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            pointer-events: none;
             z-index: 2;
         }
-        
-        .container {
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 99px,
+                rgba(0, 0, 0, 0.02) 99px,
+                rgba(0, 0, 0, 0.02) 100px
+            );
+            pointer-events: none;
+            z-index: 2;
+        }
+       
+        .main-container {
             position: relative;
             z-index: 3;
             min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 6rem;
+        }
+        
+        .content-section {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            max-width: 600px;
-            margin: 0 auto;
+            gap: 2.5rem;
+            padding-right: 2rem;
         }
         
-        .center-text {
-            font-size: 72px;
+        .header-area {
+            margin-bottom: 1rem;
+        }
+        
+        .logo {
+            font-size: 96px;
             font-weight: 300;
-            margin-bottom: 60px;
-            text-align: center;
-            color: #ffffff;
+            color: #1a1a1a;
             position: relative;
+            letter-spacing: -2px;
+            margin-bottom: 0.5rem;
         }
         
-        .center-text span {
+        .logo span {
             display: inline-block;
             position: relative;
         }
         
-        .center-text span:nth-child(1) {
-            animation: chaos1 1.5s steps(1) infinite;
+        .logo span:nth-child(1) {
+            animation: glitch-one 1.5s steps(1) infinite;
         }
         
-        .center-text span:nth-child(2) {
-            animation: chaos2 1.7s steps(1) infinite;
+        .logo span:nth-child(2) {
+            animation: glitch-two 1.7s steps(1) infinite;
         }
         
-        .center-text span:nth-child(3) {
-            animation: chaos3 1.6s steps(1) infinite;
+        .logo span:nth-child(3) {
+            animation: glitch-three 1.6s steps(1) infinite;
         }
         
-        .center-text span:nth-child(4) {
-            animation: chaos4 1.8s steps(1) infinite;
+        .logo span:nth-child(4) {
+            animation: glitch-four 1.8s steps(1) infinite;
         }
         
-        @keyframes chaos1 {
-            0% {
-                transform: translate(0, 0) rotate(0deg) scale(1);
-            }
-            15% {
-                transform: translate(-3px, 2px) rotate(-7deg) scale(0.96);
-            }
-            30% {
-                transform: translate(0, 0) rotate(0deg) scale(1);
-            }
-            45% {
-                transform: translate(2px, -2px) rotate(5deg) scale(1.03);
-            }
-            60% {
-                transform: translate(0, 0) rotate(0deg) scale(1);
-            }
-            75% {
-                transform: translate(-2px, 3px) rotate(-4deg) scale(0.98);
-            }
-            100% {
-                transform: translate(0, 0) rotate(0deg) scale(1);
-            }
+        @keyframes glitch-one {
+            0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            15% { transform: translate(-3px, 2px) rotate(-7deg) scale(0.96); }
+            30% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            45% { transform: translate(2px, -2px) rotate(5deg) scale(1.03); }
+            60% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            75% { transform: translate(-2px, 3px) rotate(-4deg) scale(0.98); }
+            100% { transform: translate(0, 0) rotate(0deg) scale(1); }
         }
         
-        @keyframes chaos2 {
-            0% {
-                transform: translate(0, 0) rotate(0deg) skew(0deg);
-                opacity: 1;
-            }
-            20% {
-                transform: translate(2px, -1px) rotate(6deg) skew(-3deg);
-                opacity: 0.85;
-            }
-            40% {
-                transform: translate(0, 0) rotate(0deg) skew(0deg);
-                opacity: 1;
-            }
-            60% {
-                transform: translate(-3px, 2px) rotate(-5deg) skew(2deg);
-                opacity: 0.9;
-            }
-            80% {
-                transform: translate(0, 0) rotate(0deg) skew(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translate(0, 0) rotate(0deg) skew(0deg);
-                opacity: 1;
-            }
+        @keyframes glitch-two {
+            0% { transform: translate(0, 0) rotate(0deg) skew(0deg); opacity: 1; }
+            20% { transform: translate(2px, -1px) rotate(6deg) skew(-3deg); opacity: 0.85; }
+            40% { transform: translate(0, 0) rotate(0deg) skew(0deg); opacity: 1; }
+            60% { transform: translate(-3px, 2px) rotate(-5deg) skew(2deg); opacity: 0.9; }
+            80% { transform: translate(0, 0) rotate(0deg) skew(0deg); opacity: 1; }
+            100% { transform: translate(0, 0) rotate(0deg) skew(0deg); opacity: 1; }
         }
         
-        @keyframes chaos3 {
-            0% {
-                transform: translate(0, 0) rotate(0deg) scale(1);
-                filter: blur(0px);
-            }
-            12% {
-                transform: translate(-2px, -3px) rotate(-8deg) scale(1.04);
-                filter: blur(0.5px);
-            }
-            25% {
-                transform: translate(0, 0) rotate(0deg) scale(1);
-                filter: blur(0px);
-            }
-            37% {
-                transform: translate(3px, 1px) rotate(9deg) scale(0.95);
-                filter: blur(0px);
-            }
-            50% {
-                transform: translate(0, 0) rotate(0deg) scale(1);
-                filter: blur(0px);
-            }
-            62% {
-                transform: translate(-1px, 2px) rotate(-6deg) scale(1.02);
-                filter: blur(0.3px);
-            }
-            75% {
-                transform: translate(0, 0) rotate(0deg) scale(1);
-                filter: blur(0px);
-            }
-            87% {
-                transform: translate(2px, -2px) rotate(4deg) scale(0.97);
-                filter: blur(0px);
-            }
-            100% {
-                transform: translate(0, 0) rotate(0deg) scale(1);
-                filter: blur(0px);
-            }
+        @keyframes glitch-three {
+            0% { transform: translate(0, 0) rotate(0deg) scale(1); filter: blur(0px); }
+            12% { transform: translate(-2px, -3px) rotate(-8deg) scale(1.04); filter: blur(0.5px); }
+            25% { transform: translate(0, 0) rotate(0deg) scale(1); filter: blur(0px); }
+            37% { transform: translate(3px, 1px) rotate(9deg) scale(0.95); filter: blur(0px); }
+            50% { transform: translate(0, 0) rotate(0deg) scale(1); filter: blur(0px); }
+            62% { transform: translate(-1px, 2px) rotate(-6deg) scale(1.02); filter: blur(0.3px); }
+            75% { transform: translate(0, 0) rotate(0deg) scale(1); filter: blur(0px); }
+            87% { transform: translate(2px, -2px) rotate(4deg) scale(0.97); filter: blur(0px); }
+            100% { transform: translate(0, 0) rotate(0deg) scale(1); filter: blur(0px); }
         }
         
-        @keyframes chaos4 {
-            0% {
-                transform: translate(0, 0) rotate(0deg) scale(1);
-                opacity: 1;
-            }
-            18% {
-                transform: translate(3px, 2px) rotate(7deg) scale(1.05);
-                opacity: 0.8;
-            }
-            35% {
-                transform: translate(0, 0) rotate(0deg) scale(1);
-                opacity: 1;
-            }
-            52% {
-                transform: translate(-2px, -1px) rotate(-6deg) scale(0.94);
-                opacity: 0.9;
-            }
-            70% {
-                transform: translate(0, 0) rotate(0deg) scale(1);
-                opacity: 1;
-            }
-            85% {
-                transform: translate(1px, -3px) rotate(5deg) scale(1.03);
-                opacity: 0.85;
-            }
-            100% {
-                transform: translate(0, 0) rotate(0deg) scale(1);
-                opacity: 1;
-            }
+        @keyframes glitch-four {
+            0% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }
+            18% { transform: translate(3px, 2px) rotate(7deg) scale(1.05); opacity: 0.8; }
+            35% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }
+            52% { transform: translate(-2px, -1px) rotate(-6deg) scale(0.94); opacity: 0.9; }
+            70% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }
+            85% { transform: translate(1px, -3px) rotate(5deg) scale(1.03); opacity: 0.85; }
+            100% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }
         }
         
-        .links-container {
+        .tagline {
+            font-size: 13px;
+            color: #888;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .navigation {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 0.1rem;
         }
         
-        .links-container a {
-            color: #5b9bd5;
+        .nav-link {
+            color: #2a2a2a;
             text-decoration: none;
-            font-size: 18px;
-            transition: all 0.3s ease;
+            font-size: 20px;
+            font-weight: 400;
+            padding: 0.7rem 0;
+            position: relative;
+            transition: all 0.2s ease;
+            display: inline-block;
+            width: fit-content;
         }
         
-        .links-container a:hover {
-            color: #7bb5e8;
-            text-decoration: underline;
+        .nav-link::after {
+            content: '→';
+            position: absolute;
+            right: -25px;
+            opacity: 0;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-link:hover {
             transform: translateX(5px);
+            color: #000;
         }
         
-        @media (max-width: 768px) {
-            .center-text {
-                font-size: 48px;
+        .nav-link:hover::after {
+            opacity: 1;
+            right: -30px;
+        }
+        
+        .decoration-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            height: 100%;
+        }
+        
+        .binary-clock {
+            display: grid;
+            grid-template-columns: repeat(4, 45px);
+            grid-template-rows: repeat(6, 45px);
+            gap: 10px;
+        }
+        
+        .binary-bit {
+            background: #a8a59d;
+            transition: opacity 0.3s ease;
+            opacity: 0.12;
+        }
+        
+        .binary-bit.active {
+            opacity: 0.3;
+        }
+        
+        .divider-line {
+            position: absolute;
+            left: -100px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: rgba(0, 0, 0, 0.1);
+        }
+        
+        @media (max-width: 968px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                padding: 3rem 2rem;
+                gap: 4rem;
             }
             
-            .links-container a {
-                font-size: 16px;
+            .logo {
+                font-size: 72px;
+            }
+            
+            .content-section {
+                padding-right: 0;
+            }
+            
+            .decoration-section {
+                order: -1;
+                height: auto;
+            }
+            
+            .binary-clock {
+                grid-template-columns: repeat(4, 40px);
+                grid-template-rows: repeat(6, 40px);
+                gap: 8px;
+            }
+            
+            .divider-line {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 568px) {
+            .logo {
+                font-size: 56px;
+            }
+            
+            .nav-link {
+                font-size: 18px;
+            }
+            
+            .binary-clock {
+                grid-template-columns: repeat(4, 35px);
+                grid-template-rows: repeat(6, 35px);
+                gap: 6px;
+            }
+            
+            .main-container {
+                padding: 2rem 1.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="bg-image"></div>
-    <div class="overlay"></div>
-    
-    <div class="container">
-        <div class="center-text">
-            <span>c</span><span>1</span><span>2</span><span>e</span>
+    <div class="background-image"></div>
+    <div class="background-overlay"></div>
+    <div class="main-container">
+        <div class="content-section">
+            <div class="header-area">
+                <h1 class="logo">
+                    <span>c</span><span>1</span><span>2</span><span>e</span>
+                </h1>
+                <p class="tagline">digital / audio / visual</p>
+            </div>
+            
+            <nav class="navigation">
+                <a href="https://youtube.com/@c.12e" class="nav-link">Youtube</a>
+                <a href="https://c12e.newgrounds.com/" class="nav-link">Newgrounds</a>
+                <a href="https://c12e.bandcamp.com" class="nav-link">Bandcamp</a>
+                <a href="https://bsky.app/profile/c12e.bsky.social" class="nav-link">Bluesky</a>
+                <a href="https://www.instagram.com/00c12e/" class="nav-link">Instagram</a>
+                <a href="commissions.html" class="nav-link">Commissions</a>
+            </nav>
         </div>
         
-        <div class="links-container">
-            <a href="https://youtube.com/@c.12e">Youtube</a>
-            <a href="https://c12e.newgrounds.com/">Newgrounds</a>
-            <a href="https://c12e.bandcamp.com">Bandcamp</a>
-            <a href="https://x.com/c12ead">X</a>
-            <a href="commissions.html">Commissions</a>
+        <div class="decoration-section">
+            <div class="divider-line"></div>
+            <div class="binary-clock" id="binaryClock">
+
+                <div class="binary-bit" data-row="0" data-col="0"></div>
+                <div class="binary-bit" data-row="0" data-col="1"></div>
+                <div class="binary-bit" data-row="0" data-col="2"></div>
+                <div class="binary-bit" data-row="0" data-col="3"></div>
+                
+                <div class="binary-bit" data-row="1" data-col="0"></div>
+                <div class="binary-bit" data-row="1" data-col="1"></div>
+                <div class="binary-bit" data-row="1" data-col="2"></div>
+                <div class="binary-bit" data-row="1" data-col="3"></div>
+                
+                <div class="binary-bit" data-row="2" data-col="0"></div>
+                <div class="binary-bit" data-row="2" data-col="1"></div>
+                <div class="binary-bit" data-row="2" data-col="2"></div>
+                <div class="binary-bit" data-row="2" data-col="3"></div>
+                
+                <div class="binary-bit" data-row="3" data-col="0"></div>
+                <div class="binary-bit" data-row="3" data-col="1"></div>
+                <div class="binary-bit" data-row="3" data-col="2"></div>
+                <div class="binary-bit" data-row="3" data-col="3"></div>
+                
+                <div class="binary-bit" data-row="4" data-col="0"></div>
+                <div class="binary-bit" data-row="4" data-col="1"></div>
+                <div class="binary-bit" data-row="4" data-col="2"></div>
+                <div class="binary-bit" data-row="4" data-col="3"></div>
+                
+                <div class="binary-bit" data-row="5" data-col="0"></div>
+                <div class="binary-bit" data-row="5" data-col="1"></div>
+                <div class="binary-bit" data-row="5" data-col="2"></div>
+                <div class="binary-bit" data-row="5" data-col="3"></div>
+            </div>
         </div>
     </div>
+
+    <script>
+        function toBinary(num) {
+            return [
+                (num & 8) !== 0,
+                (num & 4) !== 0,
+                (num & 2) !== 0,
+                (num & 1) !== 0
+            ];
+        }
+
+        function updateBinaryClock() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            
+            const hoursTens = Math.floor(hours / 10);
+            const hoursOnes = hours % 10;
+            const minutesTens = Math.floor(minutes / 10);
+            const minutesOnes = minutes % 10;
+            const secondsTens = Math.floor(seconds / 10);
+            const secondsOnes = seconds % 10;
+            
+            const values = [
+                toBinary(hoursTens),
+                toBinary(hoursOnes),
+                toBinary(minutesTens),
+                toBinary(minutesOnes),
+                toBinary(secondsTens),
+                toBinary(secondsOnes)
+            ];
+            
+            const bits = document.querySelectorAll('.binary-bit');
+            bits.forEach(bit => {
+                const row = parseInt(bit.dataset.row);
+                const col = parseInt(bit.dataset.col);
+                
+                if (values[row][col]) {
+                    bit.classList.add('active');
+                } else {
+                    bit.classList.remove('active');
+                }
+            });
+        }
+        
+        updateBinaryClock();
+        setInterval(updateBinaryClock, 1000);
+    </script>
 </body>
 </html>
