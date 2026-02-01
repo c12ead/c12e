@@ -3,34 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>c12e</title>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>Site</title>
+    <style>
+        body {
+            background-color: #1c1c1c;
+            color: #c0c0c0;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
 
+        .wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #87ceeb;
+            font-size: 48px;
+            font-family: "Times New Roman", Times, serif;
+            text-align: center;
+            margin: 30px 0 10px 0;
+            letter-spacing: 12px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #999999;
+            font-size: 14px;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #444444;
+            margin: 25px 0;
+        }
+
+        .intro {
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .links-header {
+            font-size: 16px;
+            color: #87ceeb;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .links-grid {
+            display: table;
+            margin: 0 auto;
+            border-spacing: 15px 10px;
+        }
+
+        .link-row {
+            display: table-row;
+        }
+
+        .link-cell {
+            display: table-cell;
+            text-align: left;
+        }
+
+        .link-cell a {
+            color: #6495ed;
+            text-decoration: underline;
+            font-size: 15px;
+        }
+
+        .link-cell a:visited {
+            color: #9370db;
+        }
+
+        .link-cell a:hover {
+            color: #87ceeb;
+        }
+
+        .link-bullet {
+            color: #666666;
+            padding-right: 8px;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 11px;
+            color: #666666;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333333;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 36px;
+                letter-spacing: 6px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="background-image"></div>
-    <div class="background-overlay"></div>
-    <div class="main-container">
-        <div class="content-section">
-            <div class="header-area">
-                <h1 class="logo">
-                    <span>c</span><span>1</span><span>2</span><span>e</span>
-                </h1>
-                <p class="tagline">i like making music and other things,</p>
-                <p class="tagline">like breathing </p>
-
-                
-            </div>
-            
-            <nav class="navigation">
-                <a href="https://youtube.com/@00c12e" class="nav-link">Youtube</a>
-                <a href="https://c12e.newgrounds.com/" class="nav-link">Newgrounds</a>
-                <a href="https://c12e.bandcamp.com" class="nav-link">Bandcamp</a>
-                <a href="https://bsky.app/profile/c12e.bsky.social" class="nav-link">Bluesky</a>
-                <a href="https://www.instagram.com/00c12e/" class="nav-link">Instagram</a>
-         
-        </div>
+    <div class="wrapper">
+        <h1>spondee</h1>
         
-     
+        <div class="subtitle">
+            making music and other things like breathing
+        </div>
+
+        <hr>
+
+        <div class="intro">
+            
+        </div>
+
+        <div class="links-header">links</div>
+
+        <div class="links-grid">
+            <div class="link-row">
+                <div class="link-cell"><span class="link-bullet">•</span><a href="https://youtube.com/@spond-ee">YouTube</a></div>
+                <div class="link-cell"><span class="link-bullet">•</span><a href="https://spondee.newgrounds.com/">Newgrounds</a></div>
+            </div>
+            <div class="link-row">
+                <div class="link-cell"><span class="link-bullet">•</span><a href="https://spond-ee.bandcamp.com/">Bandcamp</a></div>
+                <div class="link-cell"><span class="link-bullet">•</span><a href="https://bsky.app/profile/spond-ee.bsky.social">Bluesky</a></div>
+            </div>
+            <div class="link-row">
+                <div class="link-cell"></div>
+            </div>
+        </div>
+
+        <div class="footer">
+        </div>
+    </div>
 </body>
 </html>
